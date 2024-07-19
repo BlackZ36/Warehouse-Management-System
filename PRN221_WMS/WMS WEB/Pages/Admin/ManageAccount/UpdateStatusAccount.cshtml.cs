@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using WMS_BLL.Models;
+using WMS_DAL.Implement;
+using WMS_DAL.Interface;
+
+namespace WMS_WEB.Pages.Admin.ManageAccount
+{
+    public class UpdateStatusAccountModel : PageModel
+    {
+        private readonly IAccountRepository _accountRepository;
+        public UpdateStatusAccountModel()
+        {
+            _accountRepository = new AccountRepository();
+        }
+
+        [BindProperty]
+        public Account Account { get; set; } = default!;
+
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            if (HttpContext.Session.GetString("account") is null)
+            {
+                return RedirectToPage("/Login");
+            }
+
+            var role = HttpContext.Session.GetString("account");
+
+            if (role != "admin")
+            {
+                return RedirectToPage("/Login");
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var account = _accountRepository.GetAccountByID((int)id);
+
+                if (account == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    Account = account;
+                }
+                return Page();
+            }
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            bool result = _accountRepository.BanAccount((int)id);
+            return RedirectToPage("./ListAccount");
+        }
+    }
+}

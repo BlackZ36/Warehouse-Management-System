@@ -1,0 +1,17 @@
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\bin\Debug\net6.0\WMS DAL.deps.json
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\bin\Debug\net6.0\WMS DAL.runtimeconfig.json
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\bin\Debug\net6.0\WMS DAL.dll
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\bin\Debug\net6.0\WMS DAL.pdb
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.csproj.AssemblyReference.cache
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.AssemblyInfoInputs.cache
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.AssemblyInfo.cs
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.csproj.CoreCompileInputs.cache
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.dll
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\refint\WMS DAL.dll
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.pdb
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.genruntimeconfig.cache
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\ref\WMS DAL.dll
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\bin\Debug\net6.0\WMS BLL.dll
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\bin\Debug\net6.0\WMS BLL.pdb
+C:\Users\duchi\Desktop\PRN221_WMS\WMS DAL\obj\Debug\net6.0\WMS DAL.csproj.CopyComplete

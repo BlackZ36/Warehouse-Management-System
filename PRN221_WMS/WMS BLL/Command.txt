@@ -1,0 +1,13 @@
+﻿dotnet ef dbcontext scaffold "server =(local); database = PRN221_WMS;uid=sa;pwd=sa12345;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "server =(local); database = PRN221_WMS;uid=sa;pwd=sa12345;"
+  }
+}
+
+var ConnectionString = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetConnectionString("DefaultConnection");
+optionsBuilder.UseSqlServer(ConnectionString);
+
+builder.Services.AddDbContext<ZStore_SampleContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
