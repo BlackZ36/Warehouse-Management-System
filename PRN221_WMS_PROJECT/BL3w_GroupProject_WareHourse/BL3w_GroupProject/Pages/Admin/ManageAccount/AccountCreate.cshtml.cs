@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Admin.ManageAccount
+namespace WMS_WEB.Pages.Admin.ManageAccount
 {
     public class AccountCreateModel : PageModel
     {

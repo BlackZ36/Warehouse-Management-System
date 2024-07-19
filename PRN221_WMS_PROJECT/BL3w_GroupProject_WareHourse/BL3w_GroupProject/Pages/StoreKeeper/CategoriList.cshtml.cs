@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.StoreKeeper
+namespace WMS_WEB.Pages.StoreKeeper
 {
     public class CategoriListModel : PageModel
     {

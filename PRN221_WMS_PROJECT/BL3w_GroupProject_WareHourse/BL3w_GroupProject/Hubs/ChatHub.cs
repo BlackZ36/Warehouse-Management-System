@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace BL3w_GroupProject.Hubs
+namespace WMS_WEB.Hubs
 {
     public class ChatHub : Hub
     {

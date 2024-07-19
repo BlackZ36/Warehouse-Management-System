@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BL3w_GroupProject.Pages
+namespace WMS_WEB.Pages
 {
     public class LogoutModel : PageModel
     {

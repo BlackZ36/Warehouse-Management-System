@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Admin.ManageStockOut
+namespace WMS_WEB.Pages.Admin.ManageStockOut
 {
     public class StockOutEditModel : PageModel
     {

@@ -9,7 +9,7 @@ using BusinessObject.Models;
 using Service;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
-namespace BL3w_GroupProject.Pages.Admin.ManageCategory
+namespace WMS_WEB.Pages.Admin.ManageCategory
 {
     public class ListCategoryModel : PageModel
     {

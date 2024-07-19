@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Manager.PartnerPage
+namespace WMS_WEB.Pages.Manager.PartnerPage
 {
     public class EditModel : PageModel
     {

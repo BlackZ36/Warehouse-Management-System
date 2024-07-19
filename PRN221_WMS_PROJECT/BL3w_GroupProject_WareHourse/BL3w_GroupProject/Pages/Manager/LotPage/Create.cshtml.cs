@@ -9,7 +9,7 @@ using BusinessObject.Models;
 using Service;
 using Microsoft.Identity.Client.Extensions.Msal;
 
-namespace BL3w_GroupProject.Pages.Manager.LotPage
+namespace WMS_WEB.Pages.Manager.LotPage
 {
     public class CreateModel : PageModel
     {

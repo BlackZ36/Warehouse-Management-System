@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client;
 using Service;
 
-namespace BL3w_GroupProject.Pages
+namespace WMS_WEB.Pages
 {
     public class IndexModel : PageModel
     {

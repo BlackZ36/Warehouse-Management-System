@@ -10,7 +10,7 @@ using Service;
 using System.Drawing.Printing;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
-namespace BL3w_GroupProject.Pages.Admin.ManagePartner
+namespace WMS_WEB.Pages.Admin.ManagePartner
 {
     public class ListPartnerModel : PageModel
     {

@@ -31,7 +31,7 @@ namespace DAO
             List<StorageArea> storageArea;
             try
             {
-                var context = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var context = new PRN221_WMSContext();
                 storageArea = context.StorageAreas
                     .ToList();
             }
@@ -47,7 +47,7 @@ namespace DAO
             StorageArea storage = null;
             try
             {
-                var db = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var db = new PRN221_WMSContext();
                 storage = db.StorageAreas.SingleOrDefault(u => u.AreaId == id);
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     bool existingStorageArea = db.StorageAreas
                         .Any(a => a.AreaCode.ToLower().Equals(storage.AreaCode.ToLower()) || a.AreaName.ToLower().Equals(storage.AreaName.ToLower()));
@@ -91,7 +91,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     var existing = db.StorageAreas.SingleOrDefault(x => x.AreaId == storage.AreaId);
                     if (existing != null)
@@ -121,7 +121,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     StorageArea storageArea = db.StorageAreas.SingleOrDefault(s => s.AreaId == areaId);
 
@@ -157,7 +157,7 @@ namespace DAO
             List<StorageArea> loadArea;
             try
             {
-                var myStoreDB = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var myStoreDB = new PRN221_WMSContext();
                 loadArea = myStoreDB.StorageAreas
                .Where(area => area.AreaId != null)
                .Select(area => new StorageArea

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL3w_GroupProject", "BL3w_GroupProject\BL3w_GroupProject.csproj", "{AFF4BD22-0B2B-4332-9311-B38B4BBAC6EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WMS WEB", "BL3w_GroupProject\WMS WEB.csproj", "{AFF4BD22-0B2B-4332-9311-B38B4BBAC6EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAO", "DAO\DAO.csproj", "{E8D020C5-626D-4977-A259-BB9C7ECB05D9}"
 EndProject

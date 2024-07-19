@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Manager.ProductPage
+namespace WMS_WEB.Pages.Manager.ProductPage
 {
     public class CreateModel : PageModel
     {

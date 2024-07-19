@@ -31,7 +31,7 @@ namespace DAO
             List<Product> listProduct = null;
             try
             {
-                var dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var dbContext = new PRN221_WMSContext();
                 listProduct = dbContext.Products
                     .Include(c => c.Area)
                     .Include(c => c.Category)
@@ -50,7 +50,7 @@ namespace DAO
         {
             try
             {
-                var myStoreDB = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var myStoreDB = new PRN221_WMSContext();
                 Product old = myStoreDB.Products
                     .SingleOrDefault(p => p.ProductCode.ToLower().Equals(product.ProductCode.ToLower()));
 
@@ -77,7 +77,7 @@ namespace DAO
             Product product = null;
             try
             {
-                var myStoreDB = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var myStoreDB = new PRN221_WMSContext();
                 product = myStoreDB.Products
                             .AsNoTracking()
                             .Include(c => c.Area)
@@ -97,7 +97,7 @@ namespace DAO
         {
             try
             {
-                var myStoreDB = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var myStoreDB = new PRN221_WMSContext();
                 bool existingPartner = GetProducts()
                         .Where(p => p.ProductId != product.ProductId)
                         .Any(p => p.ProductCode.ToLower().Equals(product.ProductCode.ToLower()));
@@ -124,7 +124,7 @@ namespace DAO
             Product product = GetProductByID(productId);
             try
             {
-                var myStoreDB = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var myStoreDB = new PRN221_WMSContext();
                 myStoreDB.Products.Remove(product);
                 myStoreDB.SaveChanges();
             }

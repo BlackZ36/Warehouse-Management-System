@@ -9,7 +9,7 @@ using BusinessObject.Models;
 using Service;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
-namespace BL3w_GroupProject.Pages.Admin.ManageStorage
+namespace WMS_WEB.Pages.Admin.ManageStorage
 {
     public class ListStorageModel : PageModel
     {

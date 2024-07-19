@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Manager.StoragePage
+namespace WMS_WEB.Pages.Manager.StoragePage
 {
     public class ListStorageModel : PageModel
     {

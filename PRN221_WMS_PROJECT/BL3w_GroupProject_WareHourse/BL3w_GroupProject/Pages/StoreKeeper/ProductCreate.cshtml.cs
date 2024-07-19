@@ -9,7 +9,7 @@ using BusinessObject.Models;
 using Repositories;
 using Service;
 
-namespace BL3w_GroupProject.Pages.StoreKeeper
+namespace WMS_WEB.Pages.StoreKeeper
 {
     public class ProductCreateModel : PageModel
     {

@@ -12,7 +12,7 @@ namespace DAO
     public class StockOutDAO
     {
         private static StockOutDAO instance = null;
-        private static PRN221_Fall23_3W_WareHouseManagementContext dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+        private static PRN221_WMSContext dbContext = new PRN221_WMSContext();
         public StockOutDAO() { }
         public static StockOutDAO Instance
         {
@@ -31,7 +31,7 @@ namespace DAO
             List<StockOut> stockOuts = null;
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     stockOuts = db.StockOuts
                     .Include(x => x.StockOutDetails)
@@ -53,7 +53,7 @@ namespace DAO
             List<StockOutDetail> stockOutsDetail = null;
             try
             {
-                using (var dbContext = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var dbContext = new PRN221_WMSContext())
                 {
                     stockOutsDetail = dbContext.StockOutDetails
                         .Include(x => x.Product)
@@ -93,7 +93,7 @@ namespace DAO
         {
             try
             {
-                using (var dbContext = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var dbContext = new PRN221_WMSContext())
                 {
                     stockOut.DateOut = DateTime.Now;
                     stockOut.Status = 1;
@@ -112,7 +112,7 @@ namespace DAO
         {
             try
             {
-                using (var dbContext = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var dbContext = new PRN221_WMSContext())
                 {
                     dbContext.StockOutDetails.Add(stockoutDetail);
                     dbContext.SaveChanges();
@@ -131,7 +131,7 @@ namespace DAO
 
             try
             {
-                using (var dbContext = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var dbContext = new PRN221_WMSContext())
                 {
                     var stockOut = dbContext.StockOuts.Find(stockOutId);
 
@@ -192,7 +192,7 @@ namespace DAO
 
         public void UpdateStockOuts(StockOut NewstockOut)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             try
             {
                 StockOut OldStockOut = GetStockOutById(NewstockOut.StockOutId);
@@ -241,7 +241,7 @@ namespace DAO
 
         public void UpdateStockOutsDetail(int stockOutDetailsId, int Quantity)
         {
-                var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var _dbContext = new PRN221_WMSContext();
                 try
                 {
                     StockOutDetail stockOutDetailsList = _dbContext.StockOutDetails
@@ -304,7 +304,7 @@ namespace DAO
         }
         public void DeleteStockOutPermanently(StockOut stock)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var eStock = GetStockOutById(stock.StockOutId);
             if (eStock != null)
             {
@@ -318,7 +318,7 @@ namespace DAO
         }
         public void DeleteStockOutDetailsPermanently(StockOutDetail detail)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var eStockDetail = GetStockOutsDetailById(detail.StockOutId);
             if (eStockDetail != null)
             {

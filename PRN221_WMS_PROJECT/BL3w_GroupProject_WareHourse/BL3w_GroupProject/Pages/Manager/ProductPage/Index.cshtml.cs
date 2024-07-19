@@ -9,7 +9,7 @@ using BusinessObject.Models;
 using Service;
 using System.Drawing.Printing;
 
-namespace BL3w_GroupProject.Pages.Manager.ProductPage
+namespace WMS_WEB.Pages.Manager.ProductPage
 {
     public class IndexModel : PageModel
     {

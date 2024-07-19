@@ -6,13 +6,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace BusinessObject.Models
 {
-    public partial class PRN221_Fall23_3W_WareHouseManagementContext : DbContext
+    public partial class PRN221_WMSContext : DbContext
     {
-        public PRN221_Fall23_3W_WareHouseManagementContext()
+        public PRN221_WMSContext()
         {
         }
 
-        public PRN221_Fall23_3W_WareHouseManagementContext(DbContextOptions<PRN221_Fall23_3W_WareHouseManagementContext> options)
+        public PRN221_WMSContext(DbContextOptions<PRN221_WMSContext> options)
             : base(options)
         {
         }

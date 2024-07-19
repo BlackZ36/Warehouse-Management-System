@@ -10,7 +10,7 @@ using BusinessObject.Models;
 using Service;
 using Microsoft.Identity.Client.Extensions.Msal;
 
-namespace BL3w_GroupProject.Pages.Manager.StoragePage
+namespace WMS_WEB.Pages.Manager.StoragePage
 {
     public class EditStorageAreaModel : PageModel
     {

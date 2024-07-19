@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Admin
+namespace WMS_WEB.Pages.Admin
 {
     public class DashboardModel : PageModel
     {

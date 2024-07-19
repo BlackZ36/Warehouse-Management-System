@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.Admin.ManageStockOutDetail
+namespace WMS_WEB.Pages.Admin.ManageStockOutDetail
 {
     public class ListStockOutDetailModel : PageModel
     {

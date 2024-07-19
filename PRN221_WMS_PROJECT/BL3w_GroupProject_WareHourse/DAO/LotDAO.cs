@@ -33,7 +33,7 @@ namespace DAO
         // lot
         public IEnumerable<Lot> GetAllLots()
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Include(c => c.Account)
                 .Include(c => c.Partner)
@@ -42,7 +42,7 @@ namespace DAO
         }
         public IEnumerable<Lot> GetListLotByAccountID(int acID)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Where(c => c.AccountId == acID)
                 .Include(c => c.Account)
@@ -52,7 +52,7 @@ namespace DAO
         }
         public IEnumerable<Lot> GetListLotByPartnerID(int acID)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Where(c => c.PartnerId == acID)
                 .Include(c => c.Account)
@@ -62,7 +62,7 @@ namespace DAO
         }
         public Lot GetLotById(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Include(c => c.Account)
                 .Include(c => c.Partner)
@@ -71,7 +71,7 @@ namespace DAO
         }
         public Lot GetLotByAccountId(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Include(c => c.Account)
                 .Include(c => c.Partner)
@@ -80,7 +80,7 @@ namespace DAO
         }
         public Lot GetLotByPartnerId(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Include(c => c.Account)
                 .Include(c => c.Partner)
@@ -89,7 +89,7 @@ namespace DAO
         }
         public Lot GetLotByLotCode(string code)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.Lots
                 .Include(c => c.Account)
                 .Include(c => c.Partner)
@@ -98,7 +98,7 @@ namespace DAO
         }
         public void AddLot(Lot lot)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var eLot = GetLotById(lot.LotId);
             if (eLot == null)
             {
@@ -113,7 +113,7 @@ namespace DAO
         }
         public void UpdateLot(Lot lot)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var eLot = GetLotById(lot.LotId);
             if (eLot != null)
             {
@@ -153,7 +153,7 @@ namespace DAO
         }
         public void DeleteLotPermanently(Lot lot)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var eLot = GetLotById(lot.LotId);
             if (eLot != null)
             {
@@ -167,7 +167,7 @@ namespace DAO
         }
         public void DeleteLotStatus(Lot lot)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var eLot = GetLotById(lot.LotId);
             if (eLot != null)
             {
@@ -188,7 +188,7 @@ namespace DAO
         //Lot detail 
         public IEnumerable<LotDetail> GetAllLotDetail()
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Include(c => c.Product)
                 .Include(c => c.Partner)
@@ -197,7 +197,7 @@ namespace DAO
         }
         public IEnumerable<LotDetail> GetListLotDetailByProductID(int pID)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Where(c => c.ProductId == pID)
                 .Include(c => c.Product)
@@ -207,7 +207,7 @@ namespace DAO
         }
         public IEnumerable<LotDetail> GetListLotDetailByPartnerID(int parID)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Where(c => c.PartnerId == parID)
                 .Include(c => c.Product)
@@ -217,7 +217,7 @@ namespace DAO
         }
         public IEnumerable<LotDetail> GetListLotDetailByLotID(int lotID)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Where(c => c.LotId == lotID)
                 .Include(c => c.Product)
@@ -227,7 +227,7 @@ namespace DAO
         }
         public LotDetail GetLotDetailById(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Include(c => c.Product)
                 .Include(c => c.Partner)
@@ -237,7 +237,7 @@ namespace DAO
         }
         public LotDetail GetLotDetailByProductId(int pid)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Include(c => c.Product)
                 .Include(c => c.Partner)
@@ -246,7 +246,7 @@ namespace DAO
         }
         public LotDetail GetLotDetailByPartnerId(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Include(c => c.Product)
                 .Include(c => c.Partner)
@@ -255,7 +255,7 @@ namespace DAO
         }
         public LotDetail GetLotDetailByLotId(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             return _dbContext.LotDetails
                 .Include(c => c.Product)
                 .Include(c => c.Partner)
@@ -264,7 +264,7 @@ namespace DAO
         }
         public void AddLotDetail(LotDetail detail)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var edetailLot = GetLotDetailById(detail.LotDetailId);
             if (edetailLot == null)
             {
@@ -278,7 +278,7 @@ namespace DAO
         }
         public void UpdateLotDetail(LotDetail detail)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var edetailLot = GetLotDetailById(detail.LotDetailId);
             if (edetailLot != null)
             {
@@ -316,7 +316,7 @@ namespace DAO
         }
         public void DeleteLotDetailPermanently(LotDetail detail)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var edetailLot = GetLotDetailById(detail.LotDetailId);
             if (edetailLot != null)
             {
@@ -330,7 +330,7 @@ namespace DAO
         }
         public void DeleteLotDetailStatus(LotDetail detail)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             var edetailLot = GetLotDetailById(detail.LotDetailId);
             if (edetailLot != null)
             {
@@ -345,7 +345,7 @@ namespace DAO
         }
         public List<LotDetail> GetListLotDetailById(int id)
         {
-            var _dbContext = new PRN221_Fall23_3W_WareHouseManagementContext();
+            var _dbContext = new PRN221_WMSContext();
             List<LotDetail> lotDetails = _dbContext.LotDetails
                 .Include(c => c.Product)
                 .Include(c => c.Partner)

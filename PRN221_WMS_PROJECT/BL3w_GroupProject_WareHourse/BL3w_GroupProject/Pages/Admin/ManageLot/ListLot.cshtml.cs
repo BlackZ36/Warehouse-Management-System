@@ -9,7 +9,7 @@ using BusinessObject.Models;
 using Service;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
-namespace BL3w_GroupProject.Pages.Admin.ManageLot
+namespace WMS_WEB.Pages.Admin.ManageLot
 {
     public class ListLotModel : PageModel
     {

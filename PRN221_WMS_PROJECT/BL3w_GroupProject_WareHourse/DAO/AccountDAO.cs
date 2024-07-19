@@ -31,7 +31,7 @@ namespace DAO
             List<Account> account;
             try
             {
-                var context = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var context = new PRN221_WMSContext();
                 account = context.Accounts
                     .ToList();
             }
@@ -47,7 +47,7 @@ namespace DAO
             Account account = null;
             try
             {
-                var db = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var db = new PRN221_WMSContext();
                 account = db.Accounts.SingleOrDefault(u => u.AccountId == id);
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace DAO
                 {
                     account.Status = 1;
 
-                    using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                    using (var db = new PRN221_WMSContext())
                     {
                         db.Accounts.Add(account);
                         db.SaveChanges();
@@ -87,7 +87,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     var existing = db.Accounts.SingleOrDefault(x => x.AccountId == account.AccountId);
                     if (existing != null)
@@ -120,7 +120,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     Account u = db.Accounts.SingleOrDefault(a => a.AccountId == id);
 

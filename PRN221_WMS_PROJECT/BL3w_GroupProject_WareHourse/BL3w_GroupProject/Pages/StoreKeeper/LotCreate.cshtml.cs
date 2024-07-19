@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using BusinessObject.Models;
 using Service;
 
-namespace BL3w_GroupProject.Pages.StoreKeeper
+namespace WMS_WEB.Pages.StoreKeeper
 {
     public class LotCreateModel : PageModel
     {

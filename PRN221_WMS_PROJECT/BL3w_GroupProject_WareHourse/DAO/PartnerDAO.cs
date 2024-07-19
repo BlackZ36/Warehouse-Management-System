@@ -31,7 +31,7 @@ namespace DAO
             List<Partner> partner;
             try
             {
-                var context = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var context = new PRN221_WMSContext();
                 partner = context.Partners
                     .ToList();
             }
@@ -47,7 +47,7 @@ namespace DAO
             Partner partner = null;
             try
             {
-                var db = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var db = new PRN221_WMSContext();
                 partner = db.Partners.SingleOrDefault(u => u.PartnerId == id);
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace DAO
                 {
                     partner.Status = 1;
 
-                    using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                    using (var db = new PRN221_WMSContext())
                     {
                         db.Partners.Add(partner);
                         db.SaveChanges();
@@ -89,7 +89,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
 
                     bool existingPartner = GetPartners()
@@ -118,7 +118,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     Partner partner = db.Partners.SingleOrDefault(p => p.PartnerId == id);
 

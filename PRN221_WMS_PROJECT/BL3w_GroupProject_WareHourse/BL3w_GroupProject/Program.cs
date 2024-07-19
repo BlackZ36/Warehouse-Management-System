@@ -1,7 +1,7 @@
-using BL3w_GroupProject.Hubs;
 using DAO;
 using Repositories;
 using Service;
+using WMS_WEB.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -31,7 +31,7 @@ namespace DAO
             List<Category> category;
             try
             {
-                var context = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var context = new PRN221_WMSContext();
                 category = context.Categories
                     .ToList();
             }
@@ -47,7 +47,7 @@ namespace DAO
             Category category = null;
             try
             {
-                var db = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var db = new PRN221_WMSContext();
                 category = db.Categories.SingleOrDefault(u => u.CategoryId == id);
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace DAO
                 {
                     category.Status = 1;
 
-                    using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                    using (var db = new PRN221_WMSContext())
                     {
                         db.Categories.Add(category);
                         db.SaveChanges();
@@ -91,7 +91,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     var existing = db.Categories.SingleOrDefault(x => x.CategoryId == category.CategoryId);
                     if (existing != null)
@@ -119,7 +119,7 @@ namespace DAO
         {
             try
             {
-                using (var db = new PRN221_Fall23_3W_WareHouseManagementContext())
+                using (var db = new PRN221_WMSContext())
                 {
                     Category category1 = db.Categories.SingleOrDefault(c => c.CategoryId == id);
 
@@ -157,7 +157,7 @@ namespace DAO
             List<Category> loadArea;
             try
             {
-                var myStoreDB = new PRN221_Fall23_3W_WareHouseManagementContext();
+                var myStoreDB = new PRN221_WMSContext();
                 loadArea = myStoreDB.Categories
                .Where(area => area.CategoryId != null)
                .Select(area => new Category
