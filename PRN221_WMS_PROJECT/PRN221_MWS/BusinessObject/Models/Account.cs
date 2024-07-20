@@ -23,7 +23,7 @@ namespace BusinessObject.Models
         public string Email { get; set; } = null!;
 
         [Required(ErrorMessage = "Name is required")]
-        [RegularExpression(@"^[A-Z][a-z]*((\s[A-Z][a-z]*)*)$", ErrorMessage = "FullName must have the first letter of each word capitalized")]
+        [RegularExpression(@"^[A-Z][a-z]*(\s[A-Z][a-z]*)*$", ErrorMessage = "FullName must have the first letter of each word capitalized and may contain only letters and spaces.")]
         [MinLength(5), MaxLength(50)]
         public string Name { get; set; } = null!;
 
