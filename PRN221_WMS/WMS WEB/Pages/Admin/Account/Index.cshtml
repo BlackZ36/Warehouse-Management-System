@@ -1,0 +1,96 @@
+﻿@page
+@model WMS_WEB.Pages.Admin.Account.IndexModel
+@{
+    Layout = "/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Admin</li>
+            <li class="breadcrumb-item active">Account</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Account Data Table</h5>
+
+                    <a style="margin: 0px 0px 40px 0px;"  class="btn btn-primary" href="/Admin/Account/Add" >Add New</a>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th data-sortable="false">Username</th>
+                                <th data-sortable="false">Email</th>
+                                <th>Name</th>
+                                <th data-sortable="false">Password</th>
+                                <th>Role</th>
+                                <th data-sortable="false">Phone</th>
+                                <th>Status</th>
+                                <th data-sortable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Accounts)
+                            {
+                                if (item.Role != 0)
+                                {
+                                    <tr>
+                                        <td>@item.AccountCode</td>
+                                        <td>@item.Username</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Name</td>
+                                        <td class="text-danger fw-bold">HIDDEN</td>
+
+                                        @{
+                                            if (item.Role == 1)
+                                            {
+                                                <td>Manager</td>
+                                            }
+                                            else
+                                            {
+                                                <td>StoreKeeper</td>
+                                            }
+                                        }
+
+                                        <td>@item.Phone</td>
+                                        @{
+                                            if (item.Status == 1)
+                                            {
+                                                <td class="fw-bold text-success">Active</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="fw-bold text-danger">Suspended</td>
+                                            }
+                                        }
+                                        <td>
+                                            <a class="btn btn-primary" href="/Admin/Account/Edit?id=@(item.AccountId)">
+                                                <i class="fa-solid fa-user-pen"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

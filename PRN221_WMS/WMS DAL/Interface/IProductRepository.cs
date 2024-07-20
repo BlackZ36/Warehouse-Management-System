@@ -9,10 +9,10 @@ namespace WMS_DAL.Interface
 {
     public interface IProductRepository
     {
-        public List<Product> GetProducts();
-        public Product AddProduct(Product product);
-        public Product GetProductByID(int? productId);
-        public Product UpdateProduct(Product product);
-        public Product DeleteProduct(int? product);
+        List<Product> GetProducts();
+        Product GetProductById(int id);
+        bool CreateProduct(Product product);
+        bool UpdateProduct(Product product);
+        bool DeleteProduct(int id);
     }
 }

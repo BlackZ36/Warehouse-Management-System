@@ -9,10 +9,9 @@ namespace WMS_DAL.Interface
 {
     public interface ILotRepository
     {
-        //Lot
-        IEnumerable<Lot> GetAllLots();
-        IEnumerable<Lot> GetListLotByAccountID(int acID);
-        IEnumerable<Lot> GetListLotByPartnerID(int acID);
+        List<Lot> GetAllLots();
+        List<Lot> GetListLotByAccountID(int acID);
+        List<Lot> GetListLotByPartnerID(int acID);
         Lot GetLotById(int id);
         Lot GetLotByAccountId(int id);
         Lot GetLotByLotCode(string code);
@@ -23,10 +22,10 @@ namespace WMS_DAL.Interface
         void DeleteLotStatus(Lot lot);
 
         //Detail
-        IEnumerable<LotDetail> GetAllLotDetail();
-        IEnumerable<LotDetail> GetListLotDetailByProductID(int pID);
-        IEnumerable<LotDetail> GetListLotDetailByPartnerID(int parID);
-        IEnumerable<LotDetail> GetListLotDetailByLotID(int lotID);
+        List<LotDetail> GetAllLotDetail();
+        List<LotDetail> GetListLotDetailByProductID(int pID);
+        List<LotDetail> GetListLotDetailByPartnerID(int parID);
+        List<LotDetail> GetListLotDetailByLotID(int lotID);
         LotDetail GetLotDetailById(int id);
         LotDetail GetLotDetailByProductId(int pid);
         LotDetail GetLotDetailByPartnerId(int id);

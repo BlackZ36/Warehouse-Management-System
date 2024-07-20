@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace WMS_BLL.Models
 {
@@ -13,18 +12,16 @@ namespace WMS_BLL.Models
         }
 
         public int ProductId { get; set; }
-        public int CategoryId { get; set; }
-        public int AreaId { get; set; }
         public string ProductCode { get; set; } = null!;
-        [Required]
-        public string? Name { get; set; }
+        public int CategoryId { get; set; }
+        public int StorageId { get; set; }
+        public string Name { get; set; } = null!;
+        public int? Quantity { get; set; }
+        public string? Unit { get; set; }
+        public int? Status { get; set; }
 
-        [Range(0, int.MaxValue, ErrorMessage = "Quantity must be greater than or equal to 0")]
-        public int Quantity { get; set; }
-        public int Status { get; set; }
-
-        public virtual StorageArea Area { get; set; } = null!;
         public virtual Category Category { get; set; } = null!;
+        public virtual Storage Storage { get; set; } = null!;
         public virtual ICollection<LotDetail> LotDetails { get; set; }
         public virtual ICollection<StockOutDetail> StockOutDetails { get; set; }
     }

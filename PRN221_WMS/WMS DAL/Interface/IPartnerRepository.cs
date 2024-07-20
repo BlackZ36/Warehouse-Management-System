@@ -10,9 +10,9 @@ namespace WMS_DAL.Interface
     public interface IPartnerRepository
     {
         List<Partner> GetPartners();
-        Partner GetPartnerByID(int id);
-        void AddPartner(Partner partner);
+        Partner GetPartnerById(int id);
+        bool CreatePartner(Partner partner);
         bool UpdatePartner(Partner partner);
-        bool BanPartner(int id);
+        bool DeletePartner(int id);
     }
 }

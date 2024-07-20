@@ -9,11 +9,10 @@ namespace WMS_DAL.Interface
 {
     public interface IStorageRepository
     {
-        List<StorageArea> GetStorageAreas();
-        StorageArea GetStorageAreaByID(int id);
-        bool AddStorageArea(StorageArea storage);
-        bool UpdateStorageArea(StorageArea storage);
-        bool BanStorageAreaStatus(int areaId);
-        List<StorageArea> LoadArea();
+        List<Storage> GetStorages();
+        Storage GetStorageById(int id);
+        bool AddStorage(Storage storage);
+        bool UpdateStorage(Storage storage);
+        bool DeleteStorage(int id);
     }
 }

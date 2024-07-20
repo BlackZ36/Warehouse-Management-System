@@ -71,3 +71,25 @@ C:\Users\duchi\Desktop\PRN221_WMS\WMS WEB\obj\Debug\net6.0\scopedcss\projectbund
 C:\Users\duchi\Desktop\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.csproj.CopyComplete
 C:\Users\duchi\Desktop\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.genruntimeconfig.cache
 C:\Users\duchi\Desktop\PRN221_WMS\WMS WEB\obj\Debug\net6.0\ref\WMS WEB.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\WMS WEB.exe
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\WMS WEB.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\WMS BLL.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\bin\Debug\net6.0\WMS DAL.dll
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.csproj.AssemblyReference.cache
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.AssemblyInfoInputs.cache
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.AssemblyInfo.cs
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.csproj.CoreCompileInputs.cache
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.RazorAssemblyInfo.cache
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.RazorAssemblyInfo.cs
+C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS\WMS WEB\obj\Debug\net6.0\WMS WEB.sourcelink.json

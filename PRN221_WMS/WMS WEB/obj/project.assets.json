@@ -2433,11 +2433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS WEB\\WMS WEB.csproj",
+      "projectUniqueName": "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS WEB\\WMS WEB.csproj",
       "projectName": "WMS WEB",
-      "projectPath": "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS WEB\\WMS WEB.csproj",
+      "projectPath": "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS WEB\\WMS WEB.csproj",
       "packagesPath": "C:\\Users\\duchi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS WEB\\obj\\",
+      "outputPath": "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS WEB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\duchi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2454,11 +2454,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS BLL\\WMS BLL.csproj": {
-              "projectPath": "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS BLL\\WMS BLL.csproj"
+            "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS BLL\\WMS BLL.csproj": {
+              "projectPath": "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS BLL\\WMS BLL.csproj"
             },
-            "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS DAL\\WMS DAL.csproj": {
-              "projectPath": "C:\\Users\\duchi\\Desktop\\PRN221_WMS\\WMS DAL\\WMS DAL.csproj"
+            "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS DAL\\WMS DAL.csproj": {
+              "projectPath": "C:\\Users\\duchi\\Desktop\\PRN221-Project\\PRN221_WMS\\WMS DAL\\WMS DAL.csproj"
             }
           }
         }

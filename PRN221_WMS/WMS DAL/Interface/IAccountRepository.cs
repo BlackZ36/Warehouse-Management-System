@@ -9,10 +9,10 @@ namespace WMS_DAL.Interface
 {
     public interface IAccountRepository
     {
+        Account GetAccountById(int id);
         List<Account> GetAccounts();
-        Account GetAccountByID(int id);
         bool AddAccount(Account account);
         bool UpdateAccount(Account account);
-        bool BanAccount(int id);
+        bool ChangeStatus(int id);
     }
 }

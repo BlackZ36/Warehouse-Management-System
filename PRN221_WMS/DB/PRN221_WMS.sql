@@ -1,11 +1,10 @@
-﻿USE Master
+﻿USE [MASTER]
 GO
 
-IF DB_ID('PRN221_WMS') IS NOT NULL
-BEGIN
-    ALTER DATABASE PRN221_WMS SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE PRN221_WMS;
-END
+ALTER DATABASE PRN221_WMS SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
+DROP DATABASE IF EXISTS PRN221_WMS
 GO
 
 CREATE DATABASE PRN221_WMS
@@ -14,270 +13,344 @@ GO
 USE PRN221_WMS
 GO
 
-
--- Tạo bảng Category
-CREATE TABLE Category (
-    CategoryId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    CategoryCode VARCHAR(20) NOT NULL,
-    Name NVARCHAR(100) NOT NULL,
-    Status INT NOT NULL
-);
-
--- Tạo bảng StorageArea
-CREATE TABLE StorageArea (
-    AreaId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    AreaCode VARCHAR(20) NOT NULL,
-    AreaName NVARCHAR(100) NOT NULL,
-    Status INT NOT NULL
-);
-
--- Tạo bảng Account
+-- Create Accounts table
 CREATE TABLE Account (
     AccountId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    AccountCode VARCHAR(20) NOT NULL,
-    Email VARCHAR(100) NOT NULL,
+    AccountCode NVARCHAR(20) NOT NULL,
+    Username NVARCHAR(100) NOT NULL,
+    Password NVARCHAR(255) NOT NULL,
+	Name NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(50) DEFAULT N'account@example.com',
+    Phone NVARCHAR(15) DEFAULT N'+84 354510912',
+    Role INT NOT NULL DEFAULT 1,
+    Status INT NOT NULL DEFAULT 1
+);
+GO
+
+-- Create Categories table
+CREATE TABLE Category (
+    CategoryId INT PRIMARY KEY IDENTITY(1,1),
+    CategoryCode NVARCHAR(20) NOT NULL,
     Name NVARCHAR(100) NOT NULL,
-    Password VARCHAR(50) NOT NULL,
-    Role INT NOT NULL,
-    Phone VARCHAR(50),
-    Status INT NOT NULL
+    Description NVARCHAR(255) DEFAULT N'Mô tả chi tiết hoặc khái quát của danh mục hàng hóa',
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    Status INT DEFAULT 1
 );
 
--- Tạo bảng Partner
-CREATE TABLE Partner (
-    PartnerId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    PartnerCode VARCHAR(20) NOT NULL,
+-- Create StorageAreas table
+CREATE TABLE Storage (
+    StorageId INT PRIMARY KEY IDENTITY(1,1),
+    StorageCode NVARCHAR(20) NOT NULL,
     Name NVARCHAR(100) NOT NULL,
-    Status INT NOT NULL
+    Province NVARCHAR(50) DEFAULT N'Hà Nội',
+    Address NVARCHAR(255) DEFAULT N'A5 An Bình City - Phạm Văn Đồng - Quận Bắc Từ Liêm',
+	MaxCapacity INT DEFAULT 1000,
+	CurrentCapacity INT DEFAULT 0,
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    Status INT DEFAULT 1
 );
 
--- Tạo bảng Lot
-CREATE TABLE Lot (
-    LotId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    AccountId INT NOT NULL,
-    PartnerId INT NOT NULL,
-    LotCode VARCHAR(20) NOT NULL,
-    DateIn DATE NOT NULL,
-    Note TEXT,
-    Status INT NOT NULL,
-    FOREIGN KEY (AccountId) REFERENCES Account(AccountId),
-    FOREIGN KEY (PartnerId) REFERENCES Partner(PartnerId)
-);
-
--- Tạo bảng StockOut
-CREATE TABLE StockOut (
-    StockOutId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    AccountId INT NOT NULL,
-    PartnerId INT NOT NULL,
-    DateOut DATE NOT NULL,
-    Note TEXT,
-    Status INT NOT NULL,
-    FOREIGN KEY (AccountId) REFERENCES Account(AccountId),
-    FOREIGN KEY (PartnerId) REFERENCES Partner(PartnerId)
-);
-
--- Tạo bảng Product
+-- Create Products table with Quantity and Unit
 CREATE TABLE Product (
-    ProductId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    CategoryId INT NOT NULL,
-    AreaId INT NOT NULL,
-    ProductCode VARCHAR(20) NOT NULL,
-    Name NVARCHAR(100),
-    Quantity INT NOT NULL,
-    Status INT NOT NULL,
-    FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId),
-    FOREIGN KEY (AreaId) REFERENCES StorageArea(AreaId)
+    ProductId INT PRIMARY KEY IDENTITY(1,1),
+    ProductCode NVARCHAR(20) NOT NULL,
+    CategoryId INT NOT NULL FOREIGN KEY REFERENCES Category(CategoryId),
+    StorageId INT NOT NULL FOREIGN KEY REFERENCES Storage(StorageId),
+    Name NVARCHAR(100) NOT NULL,
+    Quantity INT DEFAULT 0,
+    Unit NVARCHAR(50) DEFAULT N'Đơn vị',
+    Status INT DEFAULT 1
 );
 
--- Tạo bảng StockOutDetail
-CREATE TABLE StockOutDetail (
-    StockOutDetailId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    ProductId INT NOT NULL,
-    StockOutId INT NOT NULL,
-    Quantity INT NOT NULL,
-    FOREIGN KEY (ProductId) REFERENCES Product(ProductId),
-    FOREIGN KEY (StockOutId) REFERENCES StockOut(StockOutId)
+-- Create Partners table
+CREATE TABLE [Partner] (
+    PartnerId INT PRIMARY KEY IDENTITY(1,1),
+    PartnerCode VARCHAR(50) NOT NULL,
+    PartnerType INT,
+    Name NVARCHAR(100) NOT NULL,
+    Phone NVARCHAR(15) DEFAULT N'+84 354510912',
+    Email NVARCHAR(50) DEFAULT N'partner@example.com',
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    Status INT DEFAULT 1
 );
 
--- Tạo bảng LotDetail
+-- Create Lots table
+CREATE TABLE Lot (
+    LotId INT PRIMARY KEY IDENTITY(1,1),
+    LotCode NVARCHAR(20) NOT NULL,
+    PartnerId INT NOT NULL DEFAULT 1 FOREIGN KEY REFERENCES [Partner](PartnerId) ,
+    AccountId INT NOT NULL FOREIGN KEY REFERENCES Account(AccountId),
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    Note NVARCHAR(255) DEFAULT '',
+    Status INT DEFAULT 1
+);
+
+-- Create LotDetails table
 CREATE TABLE LotDetail (
-    LotDetailId INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    LotId INT NOT NULL,
-    ProductId INT NOT NULL,
-    PartnerId INT NOT NULL,
-    Quantity INT NOT NULL,
-    Status INT NOT NULL,
-    FOREIGN KEY (LotId) REFERENCES Lot(LotId),
-    FOREIGN KEY (ProductId) REFERENCES Product(ProductId),
-    FOREIGN KEY (PartnerId) REFERENCES Partner(PartnerId)
+    LotDetailId INT PRIMARY KEY IDENTITY(1,1),
+    LotId INT NOT NULL FOREIGN KEY REFERENCES Lot(LotId),
+	PartnerId INT NOT NULL FOREIGN KEY REFERENCES [Partner](PartnerId),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Product(ProductId),
+    Quantity INT DEFAULT 0,
+    PackingType NVARCHAR(50) DEFAULT N'Đơn vị',
+    Status INT DEFAULT 1
 );
+
+-- Create Stockouts table
+CREATE TABLE StockOut (
+    StockOutId INT PRIMARY KEY IDENTITY(1,1),
+    StockOutCode NVARCHAR(20),
+    AccountId INT NOT NULL FOREIGN KEY REFERENCES Account(AccountId),
+    PartnerId INT NOT NULL FOREIGN KEY REFERENCES [Partner](PartnerId),
+    Note NVARCHAR(255) DEFAULT '',
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    UpdatedAt DATETIME DEFAULT GETDATE(),
+    Status INT DEFAULT 1
+);
+
+-- Create StockoutDetails table
+CREATE TABLE StockOutDetail (
+    StockOutDetailId INT PRIMARY KEY IDENTITY(1,1),
+    StockOutId INT NOT NULL FOREIGN KEY REFERENCES StockOut(StockOutId),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Product(ProductId),
+    Quantity INT DEFAULT 0,
+    PackingType NVARCHAR(50) DEFAULT N'Đơn vị',
+    Status INT DEFAULT 1
+);
+
+-- Create History table
+CREATE TABLE History (
+    HistoryId INT PRIMARY KEY IDENTITY(1,1),
+    HistoryType VARCHAR(50) DEFAULT N'Không xác định',
+    StockoutId INT NULL FOREIGN KEY REFERENCES StockOut(StockOutId),
+    LotId INT NULL FOREIGN KEY REFERENCES Lot(LotId),
+    AccountId INT NOT NULL FOREIGN KEY REFERENCES Account(AccountId),
+    Action NVARCHAR(50) DEFAULT N'Đã thay đổi/ cập nhật/ thêm/ sửa/ xóa/ ...',
+    Timestamp DATETIME DEFAULT GETDATE()
+);
+
+-- Create Notifications table
+CREATE TABLE Notification (
+    NotificationId INT PRIMARY KEY IDENTITY(1,1),
+    Message VARCHAR(255) DEFAULT N'Nguyễn Văn A Đã Yêu Cầu Nhập Hàng',
+	Slug NVARCHAR(MAX) NOT NULL DEFAULT N'/manage/product',
+    Status INT DEFAULT 1,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
 GO
 
-SET IDENTITY_INSERT [dbo].[Category] ON
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (1, N'CAT001', N'Đồ điện tử', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (2, N'CAT002', N'Điện thoại di động', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (3, N'CAT003', N'Điện gia dụng', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (4, N'CAT004', N'Đồ điện tử gia dụng', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (5, N'CAT005', N'Nội thất gỗ cao cấp', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (6, N'CAT006', N'Đồ nội thất', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (7, N'CAT007', N'Phụ kiện ô tô', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (8, N'CAT008', N'Phụ kiện xe máy ', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (9, N'CAT009', N'Phụ kiện xe đạp', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (10, N'CAT010', N'Đồ chơi trẻ em', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (11, N'CAT011', N'Đồ nhựa', 1)
-INSERT [dbo].[Category] ([CategoryId], [CategoryCode], [Name], [Status]) VALUES (12, N'CAT012', N'Đồ Kim loại (Thép, inox, ...)', 1)
-SET IDENTITY_INSERT [dbo].[Category] OFF
+
+CREATE TRIGGER trg_UpdateStorageCurrentCapacity
+ON Product
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    -- Declare a table variable to store StorageId
+    DECLARE @StorageIds TABLE (StorageId INT);
+
+    -- Insert StorageIds from inserted rows (for INSERT or UPDATE operations)
+    INSERT INTO @StorageIds (StorageId)
+    SELECT DISTINCT StorageId FROM inserted;
+
+    -- Insert StorageIds from deleted rows (for DELETE operations)
+    INSERT INTO @StorageIds (StorageId)
+    SELECT DISTINCT StorageId FROM deleted;
+
+    -- Update CurrentCapacity in Storage for each StorageId
+    UPDATE Storage
+    SET CurrentCapacity = (
+        SELECT ISNULL(SUM(Quantity), 0)
+        FROM Product
+        WHERE StorageId = s.StorageId
+    )
+    FROM Storage s
+    WHERE s.StorageId IN (SELECT StorageId FROM @StorageIds);
+END;
+
 GO
-SET IDENTITY_INSERT [dbo].[StorageArea] ON 
 
-INSERT [dbo].[StorageArea] ([AreaId], [AreaCode], [AreaName], [Status]) VALUES (1, N'AREA001', N'Kho A', 1)
-INSERT [dbo].[StorageArea] ([AreaId], [AreaCode], [AreaName], [Status]) VALUES (2, N'AREA002', N'Kho B', 1)
-INSERT [dbo].[StorageArea] ([AreaId], [AreaCode], [AreaName], [Status]) VALUES (3, N'AREA003', N'Kho C', 1)
-INSERT [dbo].[StorageArea] ([AreaId], [AreaCode], [AreaName], [Status]) VALUES (4, N'AREA004', N'Kho D', 1)
-SET IDENTITY_INSERT [dbo].[StorageArea] OFF
+INSERT INTO Account (AccountCode, Username, Password, Name, Email, Phone, Role, Status)
+VALUES
+( 'ACC001', 'admin', '123', N'Nguyễn Văn A', 'admin@example.com',  '+84 354510912', 0, 1),
+( 'ACC002', 'manager1', '123', N'Nguyễn Văn B1', 'manager1@example.com','+84 354510913', 1, 1),
+( 'ACC003', 'manager2', '123', N'Nguyễn Văn B2', 'manager2@example.com','+84 354510913', 1, 1),
+( 'ACC004', 'manager3', '123', N'Nguyễn Văn B3', 'manager3@example.com','+84 354510913', 1, 1),
+( 'ACC005', 'storekeeper1', '123', N'Nguyễn Văn C1', 'storekeeper1@example.com', '+84 354510914', 2, 1),
+( 'ACC006', 'storekeeper2', '123', N'Nguyễn Văn C2', 'storekeeper2@example.com', '+84 354510914', 2, 1),
+( 'ACC007', 'storekeeper3', '123', N'Nguyễn Văn C3', 'storekeeper3@example.com', '+84 354510914', 2, 1);
+
+-- Insert data into Category table
+INSERT INTO Category (CategoryCode, Name, Description, CreatedAt, UpdatedAt, Status)
+VALUES
+    (N'CAT001', N'Điện Tử', N'Mô tả chi tiết hoặc khái quát của danh mục Điện Tử', GETDATE(), GETDATE(), 1),
+    (N'CAT002', N'Gia Dụng', N'Mô tả chi tiết hoặc khái quát của danh mục Gia Dụng', GETDATE(), GETDATE(), 1),
+    (N'CAT003', N'Thời Trang', N'Mô tả chi tiết hoặc khái quát của danh mục Thời Trang', GETDATE(), GETDATE(), 1),
+    (N'CAT004', N'Sách', N'Mô tả chi tiết hoặc khái quát của danh mục Sách', GETDATE(), GETDATE(), 1),
+    (N'CAT005', N'Sức Khỏe', N'Mô tả chi tiết hoặc khái quát của danh mục Sức Khỏe', GETDATE(), GETDATE(), 1);
+
 GO
-SET IDENTITY_INSERT [dbo].[Product] ON 
 
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (1, 1, 1, N'PROD001', N'Tivi LED Samsung 50 inch', 20, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (2, 2, 2, N'PROD002', N'Điện thoại iPhone 12', 15, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (3, 3, 3, N'PROD003', N'Máy giặt Electrolux', 27, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (4, 1, 1, N'PROD004', N'POCO X3 PRO', 12, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (5, 1, 1, N'PROD005', N'Samsung S21 ultra', 35, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (6, 2, 2, N'PROD006', N'Samsung S22 ultra', 12, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (7, 1, 1, N'PROD007', N'Iphone 15', 55, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (8, 3, 2, N'PROD008', N'Kệ giày inox', 21, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (9, 5, 1, N'PROD009', N'Giường king', 36, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (10, 1, 1, N'PROD010', N'Giường Qeen ', 26, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (11, 4, 2, N'PROD011', N'Sony Qled 55inch', 27, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (12, 2, 1, N'PROD012', N'XIAOMI k30 Pro', 25, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (13, 1, 1, N'PROD013', N'Lenovo IdeaPad 330', 23, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (14, 2, 1, N'PROD014', N'Ipad Air 2020', 58, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (15, 2, 1, N'PROD015', N'Ipad Pro 2023', 47, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (16, 2, 1, N'PROD016', N'Samsung A53', 24, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (17, 4, 3, N'PROD017', N'Samsung OLED 90inch', 57, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (18, 3, 4, N'PROD018', N'Quạt Sharp thông minh', 33, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (19, 3, 4, N'PROD019', N'Đèn học (vàng)', 82, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (20, 3, 3, N'PROD020', N'Đèn học (trắng)', 45, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (21, 11, 1, N'PROD021', N'Rổ bếp', 30, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (22, 8, 1, N'PROD022', N'Cụm thắng', 74, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (23, 8, 2, N'PROD023', N'Cụm côn tay', 114, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (24, 7, 3, N'PROD024', N'Bọc vô lăng', 78, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (25, 9, 4, N'PROD025', N'Đề Shimano ', 58, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (26, 10, 4, N'PROD026', N'Doraemon Lego', 127, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (27, 10, 2, N'PROD027', N'Xe đẩy cho bé', 46, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (28, 6, 1, N'PROD028', N'Ghế công thái học', 56, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (29, 6, 3, N'PROD029', N'Bàn công thái học', 47, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (30, 6, 1, N'PROD030', N'Tủ quần áo 2mx2m', 60, 1)
-INSERT [dbo].[Product] ([ProductId], [CategoryId], [AreaId], [ProductCode], [Name], [Quantity], [Status]) VALUES (31, 5, 4, N'PROD031', N'Tủ gỗ', 80, 1)
-SET IDENTITY_INSERT [dbo].[Product] OFF
+-- Insert data into Storage table
+INSERT INTO Storage (StorageCode, Name, Province, Address, MaxCapacity, CurrentCapacity, CreatedAt, UpdatedAt, Status)
+VALUES
+    (N'AREA001', N'Kho Hải Phòng', N'Hải Phòng', N'123 Đường Lê Hồng Phong - Hải An - Hải Phòng', 1000, 0, GETDATE(), GETDATE(), 1),
+    (N'AREA002', N'Kho Hà Nội', N'Hà Nội', N'A5 An Bình City - Phạm Văn Đồng - Quận Bắc Từ Liêm', 1000, 0, GETDATE(), GETDATE(), 1),
+    (N'AREA003', N'Kho Đà Nẵng', N'Đà Nẵng', N'456 Đường Nguyễn Văn Linh - Thanh Khê - Đà Nẵng', 1000, 0, GETDATE(), GETDATE(), 1),
+    (N'AREA004', N'Kho Vũng Tàu', N'Vũng Tàu', N'789 Đường 30/4 - TP. Vũng Tàu', 1000, 0, GETDATE(), GETDATE(), 1),
+    (N'AREA005', N'Kho Hồ Chí Minh', N'Hồ Chí Minh', N'101 Đường Nguyễn Thị Minh Khai - Quận 1 - Hồ Chí Minh', 1000, 0, GETDATE(), GETDATE(), 1);
+
 GO
-SET IDENTITY_INSERT [dbo].[Account] ON 
 
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (1, N'ACC001', N'storekeeper1@gmail.com', N'Hoàng Văn Bình', N'Matkhau123!', 1, N'0123456789', 1)
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (2, N'ACC002', N'manager1@gmail.com', N'Trần Huyền Diệp', N'Matkhau123!', 2, N'0123456789', 1)
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (3, N'ACC003', N'storekeeper2@gmail.com', N'Đinh Tiến Dũng', N'Matkhau123!', 1, N'0123456789', 1)
-
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (6, N'ACC004', N'admin@gmail.com', N'Nguyễn Duy Đức Chính', N'Matkhau123!', 0, N'0123456789', 1)
-
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (7, N'ACC005', N'storekeeper3@gmail.com', N'Lê Trọng Tấn', N'Matkhau123!', 1, N'0123456789', 1)
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (8, N'ACC006', N'storekeeper4@gmail.com', N'Bùi Anh Tuấn', N'Matkhau123!', 1, N'0123456789', 0)
-INSERT [dbo].[Account] ([AccountId], [AccountCode], [Email], [Name], [Password], [Role], [Phone], [Status]) VALUES (9, N'ACC007', N'manager2@gmail.com', N'Lê Thị Thu', N'Matkhau123!', 2, N'0123456789', 0)
-SET IDENTITY_INSERT [dbo].[Account] OFF
+-- Insert data into Product table
+INSERT INTO Product (ProductCode, CategoryId, StorageId, Name, Quantity, Unit, Status)
+VALUES
+	(N'P001-1', 1, 1, N'Tivi Samsung', 50, N'Cái', 1),
+    (N'P002-1', 1, 2, N'Điện Thoại iPhone', 30, N'Cái', 1),
+    (N'P003-1', 1, 3, N'Máy Tính Laptop Dell', 20, N'Cái', 1),
+    (N'P004-1', 1, 4, N'Loa Bluetooth JBL', 40, N'Cái', 1),
+    (N'P005-1', 1, 5, N'Đầu Đĩa Blu-ray Sony', 15, N'Cái', 1),
+	(N'P001-2', 2, 1, N'Tủ Lạnh Samsung', 25, N'Cái', 1),
+    (N'P002-2', 2, 2, N'Máy Giặt LG', 20, N'Cái', 1),
+    (N'P003-2', 2, 3, N'Bàn Ủi Philips', 35, N'Cái', 1),
+    (N'P004-2', 2, 4, N'Quạt Đứng Panasonic', 50, N'Cái', 1),
+    (N'P005-2', 2, 5, N'Lò Vi Sóng Sharp', 18, N'Cái', 1),
+	(N'P001-3', 3, 1, N'Áo Sơ Mi Nam', 100, N'Cái', 1),
+    (N'P002-3', 3, 2, N'Váy Nữ', 80, N'Cái', 1),
+    (N'P003-3', 3, 3, N'Giày Sneaker', 60, N'Đôi', 1),
+    (N'P004-3', 3, 4, N'Áo Khoác', 45, N'Cái', 1),
+    (N'P005-3', 3, 5, N'Quần Jean', 70, N'Cái', 1),
+	(N'P001-4', 4, 1, N'Sách Lập Trình C', 25, N'Cuốn', 1),
+    (N'P002-4', 4, 2, N'Sách Marketing', 30, N'Cuốn', 1),
+    (N'P003-4', 4, 3, N'Sách Quản Lý Dự Án', 20, N'Cuốn', 1),
+    (N'P004-4', 4, 4, N'Sách Kinh Tế', 15, N'Cuốn', 1),
+    (N'P005-4', 4, 5, N'Sách Học Ngoại Ngữ', 40, N'Cuốn', 1),
+	(N'P001-5', 5, 1, N'Vitamin C', 100, N'Hộp', 1),
+    (N'P002-5', 5, 2, N'Sữa Tăng Cường Canxi', 75, N'Lon', 1),
+    (N'P003-5', 5, 3, N'Thuốc Cảm', 50, N'Hộp', 1),
+    (N'P004-5', 5, 4, N'Kem Chống Nắng', 60, N'Tuýp', 1),
+    (N'P005-5', 5, 5, N'Thuốc Ho', 40, N'Hộp', 1);
 GO
-SET IDENTITY_INSERT [dbo].[Partner] ON 
 
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (1, N'PART001', N'Công ty TNHH Thương mại và Xuất nhập khẩu Đại Đồng', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (2, N'PART002', N'Công ty Cổ phần Thương mại và Xuất nhập khẩu Bách Hợp', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (3, N'PART003', N'Công ty TNHH Thương mại và Xuất nhập khẩu Điện tử - Gia dụng Minh Quang', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (4, N'PART004', N'CÔNG TY CỔ PHẦN DI CHUYỂN XANH VÀ THÔNG MINH GSM', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (5, N'PART005', N'Công ty cổ phần đầu tư hợp tác & phát triển kinh tế Việt Lào', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (6, N'PART006', N'Công ty cổ phần Vinhomes', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (7, N'PART007', N'Công ty Cổ phần Sữa Việt Nam', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (8, N'PART008', N'Công ty Cổ phần Tập đoàn Trường Hải', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (9, N'PART009', N'Công ty TNHH MTV Housing', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (10, N'PART010', N'Công ty TNHH Landing Home', 1)
-INSERT [dbo].[Partner] ([PartnerId], [PartnerCode], [Name], [Status]) VALUES (11, N'PART011', N'CÔNG TY TNHH KINH DOANH THƯƠNG MẠI VÀ DỊCH VỤ VINFAST', 1)
-SET IDENTITY_INSERT [dbo].[Partner] OFF
+-- Insert data into Partner table
+INSERT INTO Partner (PartnerCode, PartnerType, Name, Phone, Email, CreatedAt, UpdatedAt, Status)
+VALUES
+('P001', 1, N'Vingroup', N'+84 354510912', N'contact@vingroup.net', GETDATE(), GETDATE(), 1),
+    ('P002', 1, N'Central Group', N'+84 354510912', N'contact@centralgroup.com.vn', GETDATE(), GETDATE(), 1),
+    ('P003', 1, N'Saigon Co.op', N'+84 354510912', N'contact@saigoncoop.com.vn', GETDATE(), GETDATE(), 1),
+    ('P004', 1, N'Big C', N'+84 354510912', N'contact@bigc.vn', GETDATE(), GETDATE(), 1),
+    ('P005', 1, N'AEON', N'+84 354510912', N'contact@aeon.vn', GETDATE(), GETDATE(), 1),
+    ('P006', 1, N'Lottemart', N'+84 354510912', N'contact@lottemart.com.vn', GETDATE(), GETDATE(), 1),
+    ('P007', 1, N'VinMart', N'+84 354510912', N'contact@vinmart.com.vn', GETDATE(), GETDATE(), 1),
+	('P008', 2, N'Temasek Holdings', N'+84 354510912', N'contact@temasek.com', GETDATE(), GETDATE(), 1),
+    ('P009', 2, N'Sumitomo Corporation', N'+84 354510912', N'contact@sumitomo.com', GETDATE(), GETDATE(), 1),
+    ('P010', 2, N'Kinh Do Corporation', N'+84 354510912', N'contact@kinhdo.com.vn', GETDATE(), GETDATE(), 1);
 GO
-SET IDENTITY_INSERT [dbo].[Lot] ON 
 
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (1, 1, 1, N'LOT001', CAST(N'2023-01-01' AS Date), NULL, 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (2, 2, 2, N'LOT002', CAST(N'2023-02-01' AS Date), NULL, 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (3, 3, 3, N'LOT003', CAST(N'2023-03-01' AS Date), NULL, 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (4, 2, 1, N'LOT004', CAST(N'2023-12-14' AS Date), N'Input', 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (5, 2, 2, N'LOT005', CAST(N'2023-12-14' AS Date), N'Input', 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (6, 2, 3, N'LOT006', CAST(N'2023-12-14' AS Date), N'Input', 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (7, 2, 1, N'LOT007', CAST(N'2023-12-14' AS Date), N'Input', 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (8, 2, 1, N'LOT008', CAST(N'2023-12-14' AS Date), N'Input', 1)
-INSERT [dbo].[Lot] ([LotId], [AccountId], [PartnerId], [LotCode], [DateIn], [Note], [Status]) VALUES (9, 2, 4, N'LOT009', CAST(N'2023-12-14' AS Date), N'Input', 1)
-SET IDENTITY_INSERT [dbo].[Lot] OFF
+-- Insert data into Lot table
+INSERT INTO Lot (LotCode, PartnerId, AccountId, CreatedAt, UpdatedAt, Note, Status)
+VALUES
+	(N'LOT001', 1, 7, GETDATE(), GETDATE(), N'Lô hàng điện tử', 1),
+    (N'LOT002', 2, 6, GETDATE(), GETDATE(), N'Lô hàng gia dụng', 1),
+    (N'LOT003', 3, 5, GETDATE(), GETDATE(), N'Lô hàng thời trang', 1),
+    (N'LOT004', 4, 7, GETDATE(), GETDATE(), N'Lô hàng sách', 1),
+    (N'LOT005', 5, 6, GETDATE(), GETDATE(), N'Lô hàng sức khỏe', 1);
 GO
-SET IDENTITY_INSERT [dbo].[StockOut] ON 
 
-INSERT [dbo].[StockOut] ([StockOutId], [AccountId], [PartnerId], [DateOut], [Note], [Status]) VALUES (1, 1, 3, CAST(N'2023-12-13' AS Date), N'TV Samsung & iPhone 12', 1)
-INSERT [dbo].[StockOut] ([StockOutId], [AccountId], [PartnerId], [DateOut], [Note], [Status]) VALUES (2, 2, 1, CAST(N'2023-12-13' AS Date), NULL, 1)
-INSERT [dbo].[StockOut] ([StockOutId], [AccountId], [PartnerId], [DateOut], [Note], [Status]) VALUES (3, 3, 3, CAST(N'2023-03-15' AS Date), NULL, 1)
-INSERT [dbo].[StockOut] ([StockOutId], [AccountId], [PartnerId], [DateOut], [Note], [Status]) VALUES (4, 2, 5, CAST(N'2023-12-14' AS Date), NULL, 1)
-INSERT [dbo].[StockOut] ([StockOutId], [AccountId], [PartnerId], [DateOut], [Note], [Status]) VALUES (5, 2, 11, CAST(N'2023-12-14' AS Date), N'Vinfast', 1)
-INSERT [dbo].[StockOut] ([StockOutId], [AccountId], [PartnerId], [DateOut], [Note], [Status]) VALUES (6, 2, 8, CAST(N'2023-12-14' AS Date), N'THACO - Trường Hải', 1)
-SET IDENTITY_INSERT [dbo].[StockOut] OFF
+-- Insert data into LotDetail table
+INSERT INTO LotDetail (LotId, ProductId, Quantity, PackingType, Status)
+VALUES
+	(1, 1, 100, N'Cái', 1),
+    (1, 2, 50, N'Cái', 1),
+    (1, 3, 30, N'Cái', 1),
+    (1, 4, 60, N'Cái', 1),
+    (1, 5, 20, N'Cái', 1),
+    
+    (2, 6, 25, N'Cái', 1),
+    (2, 7, 20, N'Cái', 1),
+    (2, 8, 35, N'Cái', 1),
+    (2, 9, 50, N'Cái', 1),
+    (2, 10, 18, N'Cái', 1),
+    
+    (3, 11, 100, N'Cái', 1),
+    (3, 12, 80, N'Cái', 1),
+    (3, 13, 60, N'Đôi', 1),
+    (3, 14, 45, N'Cái', 1),
+    (3, 15, 70, N'Cái', 1),
+    
+    (4, 16, 25, N'Cuốn', 1),
+    (4, 17, 30, N'Cuốn', 1),
+    (4, 18, 20, N'Cuốn', 1),
+    (4, 19, 15, N'Cuốn', 1),
+    (4, 20, 40, N'Cuốn', 1),
+    
+    (5, 21, 100, N'Hộp', 1),
+    (5, 22, 75, N'Lon', 1),
+    (5, 23, 50, N'Hộp', 1),
+    (5, 24, 60, N'Tuýp', 1),
+    (5, 25, 40, N'Hộp', 1);
 GO
-SET IDENTITY_INSERT [dbo].[LotDetail] ON 
 
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (1, 1, 1, 1, 15, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (2, 2, 2, 2, 10, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (3, 3, 3, 3, 20, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (4, 4, 7, 1, 35, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (5, 4, 8, 1, 25, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (6, 4, 9, 1, 36, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (7, 4, 11, 1, 27, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (8, 4, 12, 1, 29, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (9, 5, 14, 2, 60, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (10, 5, 15, 2, 50, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (11, 5, 16, 2, 30, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (12, 5, 17, 2, 57, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (13, 5, 18, 2, 38, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (14, 6, 19, 3, 60, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (15, 6, 20, 3, 50, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (16, 6, 21, 3, 30, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (17, 6, 22, 3, 57, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (18, 6, 23, 3, 38, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (19, 7, 24, 1, 20, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (20, 7, 25, 1, 80, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (21, 7, 26, 1, 60, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (22, 7, 27, 1, 47, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (23, 7, 28, 1, 28, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (24, 8, 26, 1, 20, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (25, 8, 31, 1, 80, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (26, 8, 30, 1, 60, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (27, 8, 29, 1, 47, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (28, 8, 28, 1, 28, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (29, 9, 22, 4, 20, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (30, 9, 23, 4, 80, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (31, 9, 24, 4, 60, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (32, 9, 26, 4, 47, 1)
-INSERT [dbo].[LotDetail] ([LotDetailId], [LotId], [ProductId], [PartnerId], [Quantity], [Status]) VALUES (33, 9, 19, 4, 28, 1)
-SET IDENTITY_INSERT [dbo].[LotDetail] OFF
+-- Insert data into StockOut table
+INSERT INTO StockOut (StockOutCode, AccountId, PartnerId, Note, CreatedAt, UpdatedAt, Status)
+VALUES
+	(N'SO001', 5, 5, N'Xuất kho hàng điện tử', GETDATE(), GETDATE(), 1),
+    (N'SO002', 6, 6, N'Xuất kho hàng gia dụng', GETDATE(), GETDATE(), 1),
+    (N'SO003', 7, 7, N'Xuất kho hàng thời trang', GETDATE(), GETDATE(), 1),
+    (N'SO004', 5, 8, N'Xuất kho hàng sách', GETDATE(), GETDATE(), 1),
+    (N'SO005', 6, 9, N'Xuất kho hàng sức khỏe', GETDATE(), GETDATE(), 1);
 GO
-SET IDENTITY_INSERT [dbo].[StockOutDetail] ON 
 
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (1, 1, 1, 20)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (2, 2, 1, 30)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (3, 3, 2, 8)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (4, 25, 4, 22)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (5, 22, 4, 3)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (6, 24, 4, 2)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (7, 27, 4, 1)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (8, 23, 4, 4)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (9, 14, 5, 2)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (10, 15, 5, 3)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (11, 12, 5, 4)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (12, 20, 5, 5)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (13, 19, 5, 6)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (14, 3, 6, 3)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (15, 8, 6, 4)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (16, 18, 6, 5)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (17, 16, 6, 6)
-INSERT [dbo].[StockOutDetail] ([StockOutDetailId], [ProductId], [StockOutId], [Quantity]) VALUES (18, 10, 6, 7)
-SET IDENTITY_INSERT [dbo].[StockOutDetail] OFF
+GO
+-- Insert data into StockOutDetail table
+INSERT INTO StockOutDetail (StockOutId, ProductId, Quantity, PackingType, Status)
+VALUES
+ (1, 1, 10, N'Cái', 1),
+    (1, 2, 5, N'Cái', 1),
+    (1, 3, 3, N'Cái', 1),
+    (1, 4, 6, N'Cái', 1),
+    (1, 5, 2, N'Cái', 1),
+    
+    (2, 6, 5, N'Cái', 1),
+    (2, 7, 4, N'Cái', 1),
+    (2, 8, 7, N'Cái', 1),
+    (2, 9, 10, N'Cái', 1),
+    (2, 10, 3, N'Cái', 1),
+    
+    (3, 11, 10, N'Cái', 1),
+    (3, 12, 8, N'Cái', 1),
+    (3, 13, 6, N'Đôi', 1),
+    (3, 14, 4, N'Cái', 1),
+    (3, 15, 7, N'Cái', 1),
+    
+    (4, 16, 5, N'Cuốn', 1),
+    (4, 17, 6, N'Cuốn', 1),
+    (4, 18, 4, N'Cuốn', 1),
+    (4, 19, 3, N'Cuốn', 1),
+    (4, 20, 8, N'Cuốn', 1),
+    
+    (5, 21, 10, N'Hộp', 1),
+    (5, 22, 8, N'Lon', 1),
+    (5, 23, 5, N'Hộp', 1),
+    (5, 24, 6, N'Tuýp', 1),
+    (5, 25, 4, N'Hộp', 1);
+GO
+
+-- Insert data into History table
+INSERT INTO History (HistoryType, StockoutId, LotId, AccountId, Action, Timestamp)
+VALUES
+('Stock Out', 1, 1, 1, 'Created stock out for order #001', GETDATE()),
+('Stock Out', 2, 2, 2, 'Created stock out for order #002', GETDATE());
+
+GO
+-- Insert data into Notification table
+INSERT INTO Notification (Message, Slug, Status, CreatedAt)
+VALUES
+(N'Nguyễn Văn A Đã Yêu Cầu Nhập Hàng', '/manage/stockin', 1, GETDATE()),
+(N'Nguyễn Văn B Đã Yêu Cầu Xuất Hàng', '/manage/stockout', 1, GETDATE());
+
 GO

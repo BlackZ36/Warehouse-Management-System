@@ -22,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Admin\LotDetail\" />
+    <Folder Include="Pages\Admin\Partner\" />
+    <Folder Include="Pages\Admin\StockOutDetail\" />
+    <Folder Include="Pages\Admin\StockOut\" />
+    <Folder Include="Pages\Admin\Product\" />
+    <Folder Include="Pages\Admin\Storage\" />
     <Folder Include="Pages\Manager\" />
     <Folder Include="Pages\Storekeeper\" />
   </ItemGroup>

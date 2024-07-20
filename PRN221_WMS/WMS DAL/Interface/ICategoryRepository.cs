@@ -11,9 +11,8 @@ namespace WMS_DAL.Interface
     {
         List<Category> GetCategories();
         Category GetCategoryById(int id);
-        bool AddCategory(Category category);
+        bool CreateCategory(Category category);
         bool UpdateCategory(Category category);
-        bool BanCategoryStatus(int id);
-        List<Category> LoadCategories();
+        bool DeleteCategory(int id);
     }
 }

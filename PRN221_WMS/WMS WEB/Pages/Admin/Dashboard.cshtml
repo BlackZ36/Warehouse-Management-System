@@ -4,148 +4,400 @@
     Layout = "/Pages/Shared/_LayoutAdmin.cshtml";
 }
 
-<head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
 
-<style>
-    .group-box {
-        border-radius: 8px;
-        background-color: #51b848;
-        text-align: center;
-        padding: 10px;
-        margin: 10px;
-        color: white;
-        font-weight: bold;
-    }
 
-        .group-box p {
-            margin: 0;
-            font-size: 20px;
-        }
+<div class="pagetitle">
+    <h1>Admin Dashboard</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
 
-        .group-box:hover {
-            background-color: #034ea2;
-        }
-
-    .chart-container {
-        width: 450px;
-        height: 500px;
-        background-color: #fff7ef;
-        padding: 20px;
-        border-radius: 4px;
-        margin: 20px;
-    }
-
-</style>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-2">
-            <fieldset class="group-box">
-                <legend>Products</legend>
-                <p>@Model.ProductCount</p>
-            </fieldset>
-        </div>
-        <div class="col-md-2">
-            <fieldset class="group-box">
-                <legend>Lots</legend>
-                <p>@Model.LotCount</p>
-            </fieldset>
-        </div>
-        <div class="col-md-2">
-            <fieldset class="group-box">
-                <legend>Accounts</legend>
-                <p>@Model.AccountCount</p>
-            </fieldset>
-        </div>
-        <div class="col-md-2">
-            <fieldset class="group-box">
-                <legend>Partners</legend>
-                <p>@Model.PartnerCount</p>
-            </fieldset>
-        </div>
-        <div class="col-md-2">
-            <fieldset class="group-box">
-                <legend>Categories</legend>
-                <p>@Model.CategoryCount</p>
-            </fieldset>
-        </div>
-        <div class="col-md-2">
-            <fieldset class="group-box">
-                <legend>StockOuts</legend>
-                <p>@Model.StockOutCount</p>
-            </fieldset>
-        </div>
-    </div>
+<section class="section dashboard">
     <div class="row">
-        <div class="row justify-content-center">
-            <div class="col-md-5 chart-container" style="background-color: #fff7ef; padding: 20px; border-radius: 4px; margin: 20px">
-                <div>
-                    <h4 class="text-center">Stock Out & Lot</h4>
-                    <canvas id="chart1" style="width: 150px; height: 150px;"></canvas>
+
+        <!-- Left side columns -->
+        <div class="col-lg-8">
+            <div class="row">
+
+                <!-- Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Storage Area</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-warehouse"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>
+                                        @Model.Storages.Count()
+                                    </h6>
+                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Card -->
+                <!-- Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Partner</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-handshake"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Partners.Count()</h6>
+                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Card -->
+                <!-- Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Category</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-list"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Categories.Count()</h6>
+                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Card -->
+                <!-- Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Lot</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Lots.Count()</h6>
+                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Card -->
+                <!-- Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Stock Out</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.StockOuts.Count()</h6>
+                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Card -->
+                <!-- Card -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+
+
+                        <div class="card-body">
+                            <h5 class="card-title">Product</h5>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Products.Count()</h6>
+                                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- End Card -->
+                <!-- Reports -->
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Lot/Stockout Chart</h5>
+
+                            <!-- Column Chart -->
+                            <div id="columnChart"></div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    var categories = @Html.Raw($"[{Model.RecentDates}]");
+                                    var stockOutCounts = @Html.Raw($"[{Model.StockOutCounts.Select(count => count.ToString()).Aggregate((current, next) => $"{current}, {next}")}]");
+                                    var lotCounts = @Html.Raw($"[{Model.LotCounts.Select(count => count.ToString()).Aggregate((current, next) => $"{current}, {next}")}]");
+                                    new ApexCharts(document.querySelector("#columnChart"), {
+                                        series: [{
+                                            name: 'Lot',
+                                            data: lotCounts
+                                        }, {
+                                            name: 'Stockout',
+                                            data: stockOutCounts
+                                        }],
+                                        chart: {
+                                            type: 'bar',
+                                            height: 350
+                                        },
+                                        plotOptions: {
+                                            bar: {
+                                                horizontal: false,
+                                                columnWidth: '55%',
+                                                endingShape: 'rounded'
+                                            },
+                                        },
+                                        dataLabels: {
+                                            enabled: false
+                                        },
+                                        stroke: {
+                                            show: true,
+                                            width: 2,
+                                            colors: ['transparent']
+                                        },
+                                        xaxis: {
+                                            categories: categories,
+                                        },
+                                        yaxis: {
+                                            title: {
+                                                text: '$ (Times)'
+                                            }
+                                        },
+                                        fill: {
+                                            opacity: 1
+                                        },
+                                        tooltip: {
+                                            y: {
+                                                formatter: function (val) {
+                                                    return val + " Times"
+                                                }
+                                            }
+                                        }
+                                    }).render();
+                                });
+                            </script>
+                            <!-- End Column Chart -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Selling -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Category Distribution</h5>
+
+                            <!-- Pie Chart -->
+                            <div id="pieChart" style="min-height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative;" class="echart" _echarts_instance_="ec_1721398683355"><div style="position: relative; width: 389px; height: 400px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="389" height="400" style="position: absolute; left: 0px; top: 0px; width: 389px; height: 400px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div class="" style="position: absolute; display: block; border-style: solid; white-space: nowrap; z-index: 9999999; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; transition: opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0s, visibility 0.2s cubic-bezier(0.23, 1, 0.32, 1) 0s, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgb(255, 255, 255); border-width: 1px; border-radius: 4px; color: rgb(102, 102, 102); font: 14px / 21px &quot;Microsoft YaHei&quot;; padding: 10px; top: 0px; left: 0px; transform: translate3d(307px, 104px, 0px); border-color: rgb(115, 192, 222); pointer-events: none; visibility: hidden; opacity: 0;"><div style="margin: 0px 0 0;line-height:1;"><div style="font-size:14px;color:#666;font-weight:400;line-height:1;">Access From</div><div style="margin: 10px 0 0;line-height:1;"><div style="margin: 0px 0 0;line-height:1;"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:#73c0de;"></span><span style="font-size:14px;color:#666;font-weight:400;margin-left:2px">Video Ads</span><span style="float:right;margin-left:20px;font-size:14px;color:#666;font-weight:900">300</span><div style="clear:both"></div></div><div style="clear:both"></div></div><div style="clear:both"></div></div></div></div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    var categoryData = @Html.Raw(
+                                        Newtonsoft.Json.JsonConvert.SerializeObject(Model.CategoryNameList)
+                                        );
+
+                                    // Chuyển đổi dữ liệu thành định dạng phù hợp với ECharts
+                                    var data = categoryData.map(item => ({
+                                        value: item.Value,
+                                        name: item.Name
+                                    }));
+
+                                    echarts.init(document.querySelector("#pieChart")).setOption({
+                                        title: {
+                                            text: 'Distribution',
+                                            subtext: 'Category',
+                                            left: 'center'
+                                        },
+                                        tooltip: {
+                                            trigger: 'item'
+                                        },
+                                        legend: {
+                                            orient: 'vertical',
+                                            left: 'left'
+                                        },
+                                        series: [{
+                                            name: 'Category',
+                                            type: 'pie',
+                                            radius: '50%',
+                                            data: data,
+                                            emphasis: {
+                                                itemStyle: {
+                                                    shadowBlur: 10,
+                                                    shadowOffsetX: 0,
+                                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                                }
+                                            }
+                                        }]
+                                    });
+                                });
+                            </script>
+                            <!-- End Pie Chart -->
+
+                        </div>
+                    </div>
+                </div><!-- End Top Selling -->
+
+            </div>
+        </div><!-- End Left side columns -->
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Activity</h5>
+
+                    <div class="activity">
+
+                        @foreach (var item in @Model.CombinedList)
+                        {
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">@item.TimeAgo</div>
+                                <i class="bi bi-circle-fill activity-badge @(item.Type == 1 ? "text-danger" : "text-success") align-self-start"></i>
+                                <div class="activity-content">
+                                    <span class="fw-bold text-dark">@item.AccountName</span> @item.Description <span class="fw-bold text-dark">@item.PartnerName</span> - Code <a class="fw-bold text-dark" href="Admin/Lot/Detail?id=@item.Id" target="_blank">@item.Code</a>
+                                </div>
+                            </div>
+
+                            <!-- End activity item-->
+                        }
+
+                    </div>
+
                 </div>
             </div>
-            <div class="col-md-5 chart-container" style="background-color: #fff7ef; padding: 20px; border-radius: 4px; margin: 20px">
-                <div>
-                    <h4 class="text-center">Account</h4>
-                    <canvas id="chart2" style="width: 150px; height: 150px;"></canvas>
+            <!-- End Recent Activity -->
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Storage Usage</h5>
+
+                    <!-- Radial Bar Chart -->
+                    <div id="radialBarChart"></div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            var storageNames = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.StorageNameList));
+                            var storageUsage = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.StorageUsageList));
+                            new ApexCharts(document.querySelector("#radialBarChart"), {
+                                series: storageUsage,
+                                chart: {
+                                    height: 350,
+                                    type: 'radialBar',
+                                    toolbar: {
+                                        show: true
+                                    }
+                                },
+                                plotOptions: {
+                                    radialBar: {
+                                        dataLabels: {
+                                            name: {
+                                                fontSize: '22px',
+                                            },
+                                            value: {
+                                                fontSize: '16px',
+                                            },
+                                            total: {
+                                                show: true,
+                                                label: 'Percent',
+                                                formatter: function (w) {
+                                                    return '100%'
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                labels: storageNames,
+                            }).render();
+                        });
+                    </script>
+                    <!-- End Radial Bar Chart -->
+
                 </div>
             </div>
-        </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Account Status</h5>
+
+                    <!-- Doughnut Chart -->
+                    <canvas id="doughnutChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 740px;" width="1480" height="800"></canvas>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            var activeAccounts = @Model.GetActiveAccount();
+                            var bannedAccounts = @Model.GetBanAccount();
+                            new Chart(document.querySelector('#doughnutChart'), {
+                                type: 'doughnut',
+                                data: {
+                                    labels: [
+                                        'Suspended',
+                                        'Active'
+                                    ],
+                                    datasets: [{
+                                        label: 'Account',
+                                        data: [bannedAccounts, activeAccounts],
+                                        backgroundColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)'
+                                        ],
+                                        hoverOffset: 4
+                                    }]
+                                }
+                            });
+                        });
+                    </script>
+                    <!-- End Doughnut CHart -->
+
+                </div>
+            </div>
+
+
+        </div><!-- End Right side columns -->
+
     </div>
-</div>
-
-<script>
-    const ctx = document.getElementById('chart1');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['StockOut', 'Lot'],
-            datasets: [{
-                label: 'Compare StockOut & Lot',
-                data: [@Model.StockOutCount, @Model.LotCount],
-                backgroundColor: [
-                    '#F37021'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
-
-
-<script>
-    const ctx1 = document.getElementById('chart2');
-
-    new Chart(ctx1, {
-        type: 'pie',
-        data: {
-            labels: ['Active', 'In Active'],
-            datasets: [{
-                label: 'Account active & inactive',
-                data: [@Model.Account1, @Model.Account0],
-                backgroundColor: [
-                    '#F37021',
-                    '#51B848'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
+</section>

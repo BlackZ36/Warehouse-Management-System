@@ -14,8 +14,13 @@ namespace WMS_BLL.Models
 
         public int PartnerId { get; set; }
         public string PartnerCode { get; set; } = null!;
+        public int? PartnerType { get; set; }
         public string Name { get; set; } = null!;
-        public int Status { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public int? Status { get; set; }
 
         public virtual ICollection<LotDetail> LotDetails { get; set; }
         public virtual ICollection<Lot> Lots { get; set; }

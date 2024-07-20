@@ -1,0 +1,106 @@
+﻿@page
+@model WMS_WEB.Pages.Admin.Account.AddModel
+@{
+    Layout = "/Pages/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="pagetitle">
+    <h1>Form Layouts</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Forms</li>
+            <li class="breadcrumb-item active">Layouts</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section">
+    <div class="row">
+
+
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Account Information</h5>
+                    <p class="text-danger">
+                        @ViewData["notification"]
+                    </p>
+
+                    <!-- Vertical Form -->
+                    <form class="row g-3" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-12">
+                            <label asp-for="Account.AccountCode" class="form-label">Account Code</label>
+                            <input asp-for="Account.AccountCode" type="text" class="form-control">
+                            <span asp-validation-for="Account.AccountCode" class="text-danger"></span>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="col-12">
+                            <label asp-for="Account.Username" class="form-label">Username</label>
+                            <input asp-for="Account.Username" type="text" class="form-control">
+                            <span asp-validation-for="Account.Username" class="text-danger"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-12">
+                            <label asp-for="Account.Email" class="form-label">Email</label>
+                            <input asp-for="Account.Email" type="email" class="form-control">
+                            <span asp-validation-for="Account.Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="col-12">
+                            <label asp-for="Account.Name" class="form-label">Name</label>
+                            <input asp-for="Account.Name" type="text" class="form-control">
+                            <span asp-validation-for="Account.Name" class="text-danger"></span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="col-12">
+                            <label asp-for="Account.Password" class="form-label">Password</label>
+                            <input asp-for="Account.Password" type="password" class="form-control">
+                            <span asp-validation-for="Account.Password" class="text-danger"></span>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="col-12">
+                            <label for="inputRole" class="form-label">Role</label>
+                            <select id="inputRole" class="form-select" asp-for="Account.Role">
+                                <option value="1">Manager</option>
+                                <option value="2">StoreKeeper</option>
+                            </select>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="col-12">
+                            <label asp-for="Account.Phone" class="form-label">Phone</label>
+                            <input asp-for="Account.Phone" type="text" class="form-control">
+                            <span asp-validation-for="Account.Phone" class="text-danger"></span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form><!-- Vertical Form -->
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

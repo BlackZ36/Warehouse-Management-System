@@ -20,11 +20,9 @@ namespace WMS_WEB.Pages.Login
         {
         }
 
-        public IActionResult OnPost(string email, string password)
+        public IActionResult OnPost(string username, string password)
         {
-            var account = _accountRepository.GetAccounts()
-                .FirstOrDefault(u => u.Email.Equals(email)
-                && u.Password.Equals(password));
+            var account = _accountRepository.GetAccounts().FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
 
             if (account == null)
             {
@@ -56,7 +54,7 @@ namespace WMS_WEB.Pages.Login
                 HttpContext.Session.SetString("account", "storekeeper");
                 HttpContext.Session.SetInt32("accountId", account.AccountId);
                 HttpContext.Session.SetString("accountName", account.Name);
-                return RedirectToPage("/Staff/Dashboard");
+                return RedirectToPage("/Storekeeper/Dashboard");
             }
             return Page();
 

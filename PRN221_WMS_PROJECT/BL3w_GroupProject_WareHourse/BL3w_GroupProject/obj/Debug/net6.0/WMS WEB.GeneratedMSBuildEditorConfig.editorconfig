@@ -1,0 +1,255 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WMS_WEB
+build_property.RootNamespace = WMS_WEB
+build_property.ProjectDir = C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS_PROJECT\BL3w_GroupProject_WareHourse\BL3w_GroupProject\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\duchi\Desktop\PRN221-Project\PRN221_WMS_PROJECT\BL3w_GroupProject_WareHourse\BL3w_GroupProject
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageAccount/AccountCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlQWNjb3VudFxBY2NvdW50Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageAccount/ListAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlQWNjb3VudFxMaXN0QWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageAccount/UpdateStatusAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlQWNjb3VudFxVcGRhdGVTdGF0dXNBY2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageCategory/ListCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlQ2F0ZWdvcnlcTGlzdENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageLotDetail/ListLotDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlTG90RGV0YWlsXExpc3RMb3REZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageLot/ListLot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlTG90XExpc3RMb3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageLot/LotEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlTG90XExvdEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManagePartner/ListPartner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlUGFydG5lclxMaXN0UGFydG5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageProduct/ListProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlUHJvZHVjdFxMaXN0UHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageStockOutDetail/ListStockOutDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlU3RvY2tPdXREZXRhaWxcTGlzdFN0b2NrT3V0RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageStockOut/ListStockOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlU3RvY2tPdXRcTGlzdFN0b2NrT3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageStockOut/StockOutEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlU3RvY2tPdXRcU3RvY2tPdXRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Admin/ManageStorage/ListStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlU3RvcmFnZVxMaXN0U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/CategoryPage/BanCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDYXRlZ29yeVBhZ2VcQmFuQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/CategoryPage/CreateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDYXRlZ29yeVBhZ2VcQ3JlYXRlQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/CategoryPage/EditCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDYXRlZ29yeVBhZ2VcRWRpdENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/CategoryPage/ListCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDYXRlZ29yeVBhZ2VcTGlzdENhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/LotPage/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxMb3RQYWdlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/LotPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxMb3RQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/LotPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxMb3RQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/LotPage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxMb3RQYWdlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/PartnerPage/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxQYXJ0bmVyUGFnZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/PartnerPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxQYXJ0bmVyUGFnZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/PartnerPage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxQYXJ0bmVyUGFnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/ProductPage/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxQcm9kdWN0UGFnZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/ProductPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxQcm9kdWN0UGFnZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/ProductPage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxQcm9kdWN0UGFnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StockOutPage/StockOutCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9ja091dFBhZ2VcU3RvY2tPdXRDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StockOutPage/StockOutDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9ja091dFBhZ2VcU3RvY2tPdXREZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StockOutPage/StockOutEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9ja091dFBhZ2VcU3RvY2tPdXRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StockOutPage/StockOutList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9ja091dFBhZ2VcU3RvY2tPdXRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StoragePage/BanStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9yYWdlUGFnZVxCYW5TdG9yYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StoragePage/CreateStorageArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9yYWdlUGFnZVxDcmVhdGVTdG9yYWdlQXJlYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StoragePage/EditStorageArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9yYWdlUGFnZVxFZGl0U3RvcmFnZUFyZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Manager/StoragePage/ListStorage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTdG9yYWdlUGFnZVxMaXN0U3RvcmFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Shared/_LayoutManager.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRNYW5hZ2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Shared/_StoreKeeper.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9TdG9yZUtlZXBlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/CategoriList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcQ2F0ZWdvcmlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/LotCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcTG90Q3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/LotDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcTG90RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/LotList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcTG90TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/PartnerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcUGFydG5lckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/ProductCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcUHJvZHVjdENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/ProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcUHJvZHVjdExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/StockOutCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcU3RvY2tPdXRDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/StockOutDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcU3RvY2tPdXREZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/StockOutList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcU3RvY2tPdXRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/StoreKeeper/StorageAreaList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmVLZWVwZXJcU3RvcmFnZUFyZWFMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/duchi/Desktop/PRN221-Project/PRN221_WMS_PROJECT/BL3w_GroupProject_WareHourse/BL3w_GroupProject/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WMS_BLL.Models;
-using WMS_DAL.Implement;
 using WMS_DAL.Interface;
+using WMS_DAL.Repository;
 using WMS_WEB.Hubs;
 
 namespace WMS_WEB
@@ -21,18 +21,29 @@ namespace WMS_WEB
             //DI
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IHistoryRepository, HistoryRepository>();
             builder.Services.AddScoped<ILotRepository, LotRepository>();
+            builder.Services.AddScoped<ILotDetailRepository, LotDetailRepository>();
+            builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
             builder.Services.AddScoped<IPartnerRepository, PartnerRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IStockOutRepository, StockOutRepository>();
-            builder.Services.AddScoped<IStorageRepository, StorageAreaRepository>();
+            builder.Services.AddScoped<IStockOutDetailRepository, StockOutDetailRepository>();
+            builder.Services.AddScoped<IStorageRepository, StorageRepository>();
 
             //DBContext
             builder.Services.AddDbContext<PRN221_WMSContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            //Service
-            builder.Services.AddSession();
+            //Session
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian session hết hạn
+                options.Cookie.HttpOnly = true; // bảo mật cookie
+                options.Cookie.IsEssential = true; // Cookie 
+            });
+
+            //SignalR
             builder.Services.AddSignalR();
 
             var app = builder.Build();
